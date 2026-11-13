@@ -1,0 +1,126 @@
+[
+  {
+    "model": "products.category",
+    "pk": 1,
+    "fields": {
+      "name": "Anillos",
+      "name_en": "Rings",
+      "slug": "anillos",
+      "created_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 1,
+    "fields": {
+      "name": "Anillo en punta",
+      "name_en": "Chevron Ring",
+      "slug": "anillo-en-punta",
+      "description": "Anillo con forma semi triangular con marquecitas, en talla 19",
+      "description_en": "Semi-triangular ring adorned with marcasites, size 19",
+      "price": "90.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/chevron-ring.png",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 2,
+    "fields": {
+      "name": "Anillo corona corazón",
+      "name_en": "Heart Crown Ring",
+      "slug": "anillo-corona-corazon",
+      "description": "Anillo en plata 9.50, en forma de corona con terminación de corazón",
+      "description_en": "950 silver crown-shaped ring featuring a delicate heart finish",
+      "price": "138.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/claddagh-ring.png",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 3,
+    "fields": {
+      "name": "Anillo dos cabezas de serpiente",
+      "name_en": "Two-Headed Snake Ring",
+      "slug": "anillo-dos-cabezas-de-serpiente",
+      "description": "Anillo con dos cabezas de serpiente, encontrándose con marquecitas en la cabeza, en talla 18 regulable a 19",
+      "description_en": "Two-headed snake ring with marcasite-encrusted serpent heads meeting, size 18 adjustable to 19",
+      "price": "128.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/two-headed-snake-ring.png",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 4,
+    "fields": {
+      "name": "Anillo con piedra coral",
+      "name_en": "Coral Stone Ring",
+      "slug": "anillo-con-piedra-coral",
+      "description": "Anillo con marquecitas con piedra ovalada coral en el centro, en talla 17",
+      "description_en": "Marcasite ring featuring a central oval coral gemstone, size 17",
+      "price": "226.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/coral-ring.png",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 5,
+    "fields": {
+      "name": "Anillo de serpiente",
+      "name_en": "Snake Ring",
+      "slug": "anillo-de-serpiente",
+      "description": "Anillo en forma de serpiente en plata quemada con marquecitas, en talla 19",
+      "description_en": "Oxidized silver serpent ring embellished with marcasites, size 19",
+      "price": "190.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/snake-ring.png",
+      "is_featured": true,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "products.product",
+    "pk": 6,
+    "fields": {
+      "name": "Anillo corona",
+      "name_en": "Crown Ring",
+      "slug": "anillo-corona",
+      "description": "Anillo en forma de corona con marquecitas en plata quemada disponible en talla 12 y 19",
+      "description_en": "Oxidized silver crown-shaped ring adorned with marcasites, available in sizes 12 and 19",
+      "price": "130.00",
+      "currency": "PEN",
+      "category": 1,
+      "image": "products/crown-ring.png",
+      "is_featured": false,
+      "is_active": true,
+      "created_at": "2024-01-01T00:00:00Z",
+      "updated_at": "2024-01-01T00:00:00Z"
+    }
+  }
+]
