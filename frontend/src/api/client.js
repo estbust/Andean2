@@ -1,4 +1,6 @@
-const API_BASE = '/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const cleanBase = BASE_URL.replace(/\/+$/, '');
+const API_BASE = cleanBase.endsWith('/api') ? cleanBase : `${cleanBase}/api`;
 
 export async function fetchProducts({ category, featured } = {}) {
   const params = new URLSearchParams();
