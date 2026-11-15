@@ -21,7 +21,7 @@
   },
   "magnifier": {
     "hint": "Hover to activate goldsmith loupe",
-    "hint_mobile": "Tap image for high-resolution inspection",
+    "hint_mobile": "Tap to inspect in high resolution",
     "active": "Goldsmith Loupe 2.5x",
     "close": "Close inspector",
     "inspection_badge": "Fine Jewelry Inspection",

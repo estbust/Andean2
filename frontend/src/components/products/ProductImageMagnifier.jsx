@@ -90,14 +90,14 @@ export default function ProductImageMagnifier({
           <div className="text-text-secondary font-sans text-sm">Andean Morphia</div>
         )}
 
-        {/* Provenance Watermark Badge */}
-        <span className="absolute bottom-4 left-4 bg-warm/80 backdrop-blur-xs text-text-primary label-caps px-2.5 py-1 rounded-sm text-[10px] pointer-events-none z-10">
+        {/* Provenance Watermark Badge - Positioned in top-left corner */}
+        <span className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-warm/85 backdrop-blur-xs text-text-primary label-caps px-2.5 py-1 rounded-sm text-[10px] tracking-wider shadow-xs pointer-events-none z-10">
           {badgeText}
         </span>
 
-        {/* Loupe Status Badge (Visible when hovered) */}
+        {/* Loupe Status Badge (Visible when hovered) - Positioned in top-right corner */}
         <div
-          className={`absolute top-4 right-4 bg-text-primary/90 text-canvas label-caps px-3 py-1.5 rounded-sm text-[10px] tracking-widest backdrop-blur-sm shadow-sm flex items-center space-x-1.5 transition-all duration-300 pointer-events-none z-10 ${
+          className={`absolute top-3 right-3 sm:top-4 sm:right-4 bg-text-primary/90 text-canvas label-caps px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-sm text-[10px] tracking-widest backdrop-blur-sm shadow-sm flex items-center space-x-1.5 transition-all duration-300 pointer-events-none z-10 ${
             isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}
         >
@@ -105,10 +105,10 @@ export default function ProductImageMagnifier({
           <span>{t('magnifier.active')}</span>
         </div>
 
-        {/* Hint banner at bottom */}
+        {/* Hint banner at bottom - Exclusive dedicated bottom space, responsive typography */}
         <div
-          className={`absolute bottom-4 right-4 bg-surface/90 border border-[rgba(230,216,195,0.8)] text-text-secondary px-2.5 py-1 rounded-sm text-[10px] tracking-wider font-sans uppercase backdrop-blur-xs shadow-xs pointer-events-none transition-opacity duration-300 z-10 ${
-            isHovered ? 'opacity-0' : 'opacity-90'
+          className={`absolute bottom-3 right-3 sm:bottom-4 sm:right-4 max-w-[calc(100%-1.5rem)] sm:max-w-none bg-surface/95 border border-[rgba(230,216,195,0.85)] text-text-secondary px-2.5 sm:px-3 py-1 rounded-sm text-[9px] sm:text-[10px] tracking-wider font-sans uppercase backdrop-blur-xs shadow-xs pointer-events-none transition-opacity duration-300 z-10 text-center sm:text-right leading-tight ${
+            isHovered ? 'opacity-0' : 'opacity-95'
           }`}
         >
           <span className="hidden sm:inline">🔍 {t('magnifier.hint')}</span>

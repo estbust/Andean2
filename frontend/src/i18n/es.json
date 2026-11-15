@@ -21,7 +21,7 @@
   },
   "magnifier": {
     "hint": "Pasa el cursor para lupa de orfebre",
-    "hint_mobile": "Toca la imagen para ampliar en alta resolución",
+    "hint_mobile": "Toca para ampliar en alta resolución",
     "active": "Lupa de Orfebre 2.5x",
     "close": "Cerrar visualizador",
     "inspection_badge": "Inspección de Joyería Fina",
