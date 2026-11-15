@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useLanguage } from '../../i18n';
 import LanguageSelector from '../ui/LanguageSelector';
@@ -9,7 +9,36 @@ import logoAm from '../../assets/logo-am.svg';
 export default function Navbar() {
   const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuTop, setMenuTop] = useState(0);
+  const headerRef = useRef(null);
   const location = useLocation();
+
+  // Calculate dynamic bottom position of header for mobile drawer
+  const updateMenuPosition = useCallback(() => {
+    if (headerRef.current) {
+      const rect = headerRef.current.getBoundingClientRect();
+      setMenuTop(rect.bottom);
+    }
+  }, []);
+
+  // Update position on mount and whenever menu opens
+  useLayoutEffect(() => {
+    updateMenuPosition();
+  }, [updateMenuPosition]);
+
+  // Recalculate position on window resize and scroll when menu is active
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      updateMenuPosition();
+      window.addEventListener('resize', updateMenuPosition);
+      window.addEventListener('scroll', updateMenuPosition, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateMenuPosition);
+      window.removeEventListener('scroll', updateMenuPosition);
+    };
+  }, [mobileMenuOpen, updateMenuPosition]);
 
   // Close mobile menu when navigating
   useEffect(() => {
@@ -39,6 +68,13 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const toggleMobileMenu = () => {
+    if (!mobileMenuOpen) {
+      updateMenuPosition();
+    }
+    setMobileMenuOpen((prev) => !prev);
+  };
+
   const navLinks = [
     { to: '/', label: t('nav.home') },
     { to: '/nosotros', label: t('nav.about') },
@@ -48,6 +84,7 @@ export default function Navbar() {
 
   return (
     <header
+      ref={headerRef}
       className={`sticky top-0 z-50 border-b border-[rgba(230,216,195,0.7)] transition-colors duration-200 ${
         mobileMenuOpen
           ? 'bg-[#F8F2E4]'
@@ -107,8 +144,9 @@ export default function Navbar() {
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={toggleMobileMenu}
               className="md:hidden p-2 text-text-primary focus:outline-none"
+              aria-controls="mobile-navigation-drawer"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
@@ -137,13 +175,24 @@ export default function Navbar() {
 
       {/* Mobile Drawer / Overlay */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full inset-x-0 h-[calc(100dvh-100%)] bg-[#F8F2E4] z-50 shadow-drawer overflow-y-auto border-t border-[rgba(230,216,195,0.7)] animate-fadeIn">
-          <div className="min-h-full flex flex-col justify-between px-8 py-8">
+        <div
+          id="mobile-navigation-drawer"
+          style={{
+            top: menuTop > 0 ? `${menuTop}px` : '5rem',
+            WebkitOverflowScrolling: 'touch',
+          }}
+          className="md:hidden fixed inset-x-0 bottom-0 bg-[#F8F2E4] z-50 shadow-drawer overflow-y-auto overscroll-contain border-t border-[rgba(230,216,195,0.7)] animate-fadeIn"
+        >
+          <div
+            className="min-h-full flex flex-col justify-between px-8 pt-6 pb-12 sm:pb-8"
+            style={{ paddingBottom: 'max(2.5rem, calc(env(safe-area-inset-bottom, 0px) + 1.5rem))' }}
+          >
             <nav className="flex flex-col space-y-6 pt-2" aria-label="Navegación móvil">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) =>
                     `font-serif text-2xl tracking-wide transition-colors ${
                       isActive
