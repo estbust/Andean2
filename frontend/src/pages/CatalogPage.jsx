@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../i18n';
 import { useProducts, useCategories } from '../hooks/useProducts';
 import ProductGrid from '../components/products/ProductGrid';
+import Button from '../components/ui/Button';
 import FiligreeDivider from '../components/ui/FiligreeDivider';
+
+const PAGE_SIZE = 7;
 
 export default function CatalogPage() {
   const { language, t } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   
   const categoryParam = searchParams.get('categoria') || '';
 
@@ -16,6 +20,10 @@ export default function CatalogPage() {
     category: categoryParam || undefined,
   });
 
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [categoryParam]);
+
   const handleSelectCategory = (slug) => {
     if (!slug) {
       searchParams.delete('categoria');
@@ -23,6 +31,22 @@ export default function CatalogPage() {
     } else {
       setSearchParams({ categoria: slug });
     }
+  };
+
+  const totalProducts = products ? products.length : 0;
+  const visibleProducts = products ? products.slice(0, visibleCount) : [];
+  const shownCount = Math.min(visibleCount, totalProducts);
+  const hasPagination = !loading && !error && totalProducts > PAGE_SIZE;
+  const canShowMore = shownCount < totalProducts;
+  const canShowLess = visibleCount > PAGE_SIZE;
+  const progressPercent = totalProducts > 0 ? Math.min(100, (shownCount / totalProducts) * 100) : 0;
+
+  const handleViewMore = () => {
+    setVisibleCount((prev) => Math.min(prev + PAGE_SIZE, totalProducts));
+  };
+
+  const handleViewLess = () => {
+    setVisibleCount((prev) => Math.max(PAGE_SIZE, prev - PAGE_SIZE));
   };
 
   return (
@@ -90,11 +114,59 @@ export default function CatalogPage() {
 
         {/* Product Grid */}
         <ProductGrid
-          products={products}
+          products={visibleProducts}
           loading={loading}
           error={error}
           columns={3}
         />
+
+        {/* Progressive Catalog Pagination */}
+        {hasPagination && (
+          <div className="mt-12 lg:mt-16 flex flex-col items-center gap-6">
+            <div className="w-full max-w-xs flex flex-col items-center gap-2.5">
+              <p
+                id="catalog-progress-label"
+                className="font-sans text-xs uppercase tracking-[0.14em] text-text-secondary font-medium text-center"
+              >
+                {`${t('catalog.showing_prefix')} ${shownCount} ${t('catalog.showing_of')} ${totalProducts} ${t('catalog.showing_suffix')}`}
+              </p>
+              <div
+                role="progressbar"
+                aria-labelledby="catalog-progress-label"
+                aria-valuenow={shownCount}
+                aria-valuemin={0}
+                aria-valuemax={totalProducts}
+                className="w-full h-[2px] bg-warm/70 rounded-full overflow-hidden"
+              >
+                <div
+                  className="h-full bg-gold-accent transition-all duration-500 ease-out"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+            </div>
+
+            <div className="w-full sm:w-auto flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              {canShowMore && (
+                <Button
+                  variant="primary"
+                  onClick={handleViewMore}
+                  className="w-full sm:w-auto"
+                >
+                  {t('catalog.view_more')}
+                </Button>
+              )}
+              {canShowLess && (
+                <Button
+                  variant="tertiary"
+                  onClick={handleViewLess}
+                  className="w-full sm:w-auto"
+                >
+                  {t('catalog.view_less')}
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
 
         <FiligreeDivider variant="morphia" spacing="py-12 lg:py-16" />
 

@@ -124,6 +124,11 @@
     "subtitle": "Unique pieces inspired by Andean mysticism and organic geometry.",
     "all": "All Pieces",
     "items_count": "pieces found",
+    "showing_prefix": "Showing",
+    "showing_of": "of",
+    "showing_suffix": "pieces",
+    "view_more": "View more images",
+    "view_less": "View fewer images",
     "empty_title": "No pieces found in this category",
     "empty_desc": "Please choose a different category or return to view all pieces.",
     "reset_filter": "View all pieces"

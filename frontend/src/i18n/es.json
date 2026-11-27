@@ -124,6 +124,11 @@
     "subtitle": "Piezas únicas inspiradas en el misticismo andino y la geometría natural.",
     "all": "Todas las piezas",
     "items_count": "piezas encontradas",
+    "showing_prefix": "Mostrando",
+    "showing_of": "de",
+    "showing_suffix": "piezas",
+    "view_more": "Ver más imágenes",
+    "view_less": "Ver menos imágenes",
     "empty_title": "No se encontraron joyas en esta categoría",
     "empty_desc": "Por favor selecciona otra categoría o regresa a todas las piezas.",
     "reset_filter": "Ver todas las piezas"
