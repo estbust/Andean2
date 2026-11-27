@@ -4,7 +4,9 @@ import { useLanguage } from '../../i18n';
 import Button from '../ui/Button';
 
 import eleganciaImg from '../../assets/hero/elegancia.webp';
+import elegancia2Img from '../../assets/hero/elegancia2.webp';
 import retrato1Img from '../../assets/hero/retrato1.webp';
+import anilloImg from '../../assets/hero/anillo.webp';
 import collarOroImg from '../../assets/hero/collar-oro.webp';
 import manosImg from '../../assets/hero/manos.webp';
 import pendienteImg from '../../assets/hero/pendiente.webp';
@@ -22,10 +24,22 @@ const HERO_SLIDES = [
     objectPosition: 'object-center',
   },
   {
+    key: 'elegancia2',
+    src: elegancia2Img,
+    to: '/catalogo',
+    objectPosition: 'object-center',
+  },
+  {
     key: 'retrato1',
     src: retrato1Img,
     to: '/catalogo',
     objectPosition: 'object-[48%_40%]',
+  },
+  {
+    key: 'anillo',
+    src: anilloImg,
+    to: '/catalogo?categoria=anillos',
+    objectPosition: 'object-center',
   },
   {
     key: 'collar_oro',
@@ -365,10 +379,10 @@ export default function HeroSection() {
               </div>
 
               {/* Desktop Coordinated Bottom Bar: Touch Indicators + Dynamic Editorial Caption */}
-              <div className="hidden md:flex absolute bottom-6 inset-x-6 z-10 md:flex-col-reverse lg:flex-row items-start lg:items-end justify-between gap-2.5 pointer-events-none">
+              <div className="hidden md:flex absolute bottom-6 inset-x-6 z-10 md:flex-col-reverse xl:flex-row md:items-start xl:items-end justify-between gap-2.5 pointer-events-none">
                 {/* Minimalist Slide Indicators */}
                 <div
-                  className="pointer-events-auto self-start lg:self-end inline-flex items-center gap-0.5 bg-text-primary/25 backdrop-blur-md border border-white/20 rounded-full px-2 py-1"
+                  className="pointer-events-auto md:self-start xl:self-end inline-flex items-center gap-0.5 bg-text-primary/25 backdrop-blur-md border border-white/20 rounded-full px-2 py-1"
                   role="tablist"
                   aria-label={t('hero.carousel_label')}
                 >
@@ -399,7 +413,7 @@ export default function HeroSection() {
                 {/* Dynamic Quiet-Luxury Editorial Caption Plaque */}
                 <Link
                   to={currentSlide.to}
-                  className="pointer-events-auto group w-full lg:w-auto min-w-0 max-w-full lg:max-w-[275px] xl:max-w-[300px] bg-white/85 hover:bg-white/95 backdrop-blur-md border border-[rgba(230,216,195,0.75)] hover:border-gold-accent/60 rounded-md px-5 py-3 shadow-card hover:shadow-sm transition-all duration-300 flex items-center justify-between gap-3.5"
+                  className="pointer-events-auto group md:w-full xl:w-auto min-w-0 md:max-w-full xl:max-w-[300px] bg-white/85 hover:bg-white/95 backdrop-blur-md border border-[rgba(230,216,195,0.75)] hover:border-gold-accent/60 rounded-md px-5 py-3 shadow-card hover:shadow-sm transition-all duration-300 flex items-center justify-between gap-3.5"
                   aria-label={`${captionOverline}: ${captionTitle} - ${captionMeta}`}
                 >
                   <div

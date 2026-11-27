@@ -71,11 +71,23 @@
         "meta": "PEN 190.00",
         "alt": "Andean Morphia Editorial — Handcrafted Gold Tree of Life Medallion"
       },
+      "elegancia2": {
+        "overline": "ANDEAN SKY",
+        "title": "Morphia Gold Collection",
+        "meta": "View Catalog",
+        "alt": "Andean Morphia editorial under Andean sky — Gold earrings, Tree of Life pendant, bracelet and rings"
+      },
       "retrato1": {
         "overline": "ANDEAN EDITORIAL",
         "title": "Light & Golden Heritage",
         "meta": "Explore Collection",
         "alt": "Editorial portrait wearing Andean Morphia gold jewelry against earthen tones"
+      },
+      "anillo": {
+        "overline": "AMETHYST COLLECTION",
+        "title": "Signature Gold Rings",
+        "meta": "View Rings",
+        "alt": "Editorial close-up of wavy gold amethyst ring and filigree earring by Andean Morphia"
       },
       "collar_oro": {
         "overline": "SOLAR COLLECTION",

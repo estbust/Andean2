@@ -71,11 +71,23 @@
         "meta": "PEN 190.00",
         "alt": "Editorial Andean Morphia — Dije Árbol de la Vida en oro artesanal"
       },
+      "elegancia2": {
+        "overline": "CIELO ANDINO",
+        "title": "Colección Morphia en Oro",
+        "meta": "Ver Catálogo",
+        "alt": "Editorial Andean Morphia bajo cielo andino — Aretes, dije Árbol de la Vida, pulsera y anillos en oro"
+      },
       "retrato1": {
         "overline": "EDITORIAL ANDINO",
         "title": "Luz & Herencia en Oro",
         "meta": "Ver Colección",
         "alt": "Retrato editorial con joyería en oro Andean Morphia sobre textura terrosa"
+      },
+      "anillo": {
+        "overline": "COLECCIÓN AMATISTA",
+        "title": "Anillos en Oro de Autor",
+        "meta": "Ver Anillos",
+        "alt": "Detalle editorial de anillo ondulado en oro con piedras amatista y arete de filigrana Andean Morphia"
       },
       "collar_oro": {
         "overline": "COLECCIÓN SOLAR",
