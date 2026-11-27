@@ -6,7 +6,7 @@ import ProductGrid from '../components/products/ProductGrid';
 import Button from '../components/ui/Button';
 import FiligreeDivider from '../components/ui/FiligreeDivider';
 
-const PAGE_SIZE = 7;
+const PAGE_SIZE = 9;
 
 export default function CatalogPage() {
   const { language, t } = useLanguage();
