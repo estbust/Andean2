@@ -9,6 +9,15 @@ import SizeGuideModal from '../components/products/SizeGuideModal';
 import FiligreeDivider from '../components/ui/FiligreeDivider';
 import ScrollReveal from '../components/ui/ScrollReveal';
 
+const RING_CATEGORY_REGEX = /\b(anillo|anillos|ring|rings)\b/;
+
+function isRingCategory(category) {
+  if (!category) return false;
+  return [category.slug, category.name, category.name_en]
+    .filter((val) => typeof val === 'string' && val.trim().length > 0)
+    .some((val) => RING_CATEGORY_REGEX.test(val.toLowerCase()));
+}
+
 export default function ProductDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -22,6 +31,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     let isMounted = true;
+    setSizeGuideOpen(false);
     async function loadData() {
       setLoading(true);
       setError(null);
@@ -89,6 +99,7 @@ export default function ProductDetailPage() {
     : (language === 'en' ? 'Fine Jewelry' : 'Joyería Fina');
 
   const formattedPrice = Number(product.price).toFixed(2);
+  const isRing = isRingCategory(product.category);
 
   const handleInquire = () => {
     const query = encodeURIComponent(`${t('product.inquire_message')}${displayName} (Ref: ${product.slug})`);
@@ -142,17 +153,19 @@ export default function ProductDetailPage() {
                 </div>
 
                 {/* Ring Size Guide Interactive Trigger */}
-                <button
-                  type="button"
-                  onClick={() => setSizeGuideOpen(true)}
-                  className="inline-flex items-center space-x-1.5 text-xs font-sans uppercase tracking-wider text-text-secondary hover:text-text-primary transition-colors py-1 group focus:outline-none focus:ring-1 focus:ring-text-primary rounded-sm px-1.5"
-                  aria-label={t('size_guide.button')}
-                >
-                  <span className="text-gold-accent group-hover:rotate-12 transition-transform text-sm" aria-hidden="true">📐</span>
-                  <span className="underline underline-offset-4 decoration-[rgba(184,125,59,0.5)] group-hover:decoration-text-primary font-medium">
-                    {t('size_guide.button')}
-                  </span>
-                </button>
+                {isRing && (
+                  <button
+                    type="button"
+                    onClick={() => setSizeGuideOpen(true)}
+                    className="inline-flex items-center space-x-1.5 text-xs font-sans uppercase tracking-wider text-text-secondary hover:text-text-primary transition-colors py-1 group focus:outline-none focus:ring-1 focus:ring-text-primary rounded-sm px-1.5"
+                    aria-label={t('size_guide.button')}
+                  >
+                    <span className="text-gold-accent group-hover:rotate-12 transition-transform text-sm" aria-hidden="true">📐</span>
+                    <span className="underline underline-offset-4 decoration-[rgba(184,125,59,0.5)] group-hover:decoration-text-primary font-medium">
+                      {t('size_guide.button')}
+                    </span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -242,10 +255,12 @@ export default function ProductDetailPage() {
         )}
 
         {/* Size Guide Modal */}
-        <SizeGuideModal
-          isOpen={sizeGuideOpen}
-          onClose={() => setSizeGuideOpen(false)}
-        />
+        {isRing && (
+          <SizeGuideModal
+            isOpen={sizeGuideOpen}
+            onClose={() => setSizeGuideOpen(false)}
+          />
+        )}
 
       </div>
     </div>
