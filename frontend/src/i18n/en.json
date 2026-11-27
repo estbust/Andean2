@@ -59,7 +59,55 @@
     "featured_piece_label": "Featured in image",
     "featured_piece_name": "Snake Ring",
     "featured_piece_cta": "View piece",
-    "featured_piece_price": "PEN 190.00"
+    "featured_piece_price": "PEN 190.00",
+    "carousel_label": "Andean Morphia editorial gallery",
+    "prev_slide": "Previous slide",
+    "next_slide": "Next slide",
+    "go_to_slide": "Go to slide",
+    "slides": {
+      "elegancia": {
+        "overline": "FEATURED PIECE",
+        "title": "Tree of Life Medallion",
+        "meta": "PEN 190.00",
+        "alt": "Andean Morphia Editorial — Handcrafted Gold Tree of Life Medallion"
+      },
+      "retrato1": {
+        "overline": "ANDEAN EDITORIAL",
+        "title": "Light & Golden Heritage",
+        "meta": "Explore Collection",
+        "alt": "Editorial portrait wearing Andean Morphia gold jewelry against earthen tones"
+      },
+      "collar_oro": {
+        "overline": "SOLAR COLLECTION",
+        "title": "Signature Gold Pendants",
+        "meta": "Browse Charms",
+        "alt": "Openwork solar gold pendant crafted by Andean Morphia"
+      },
+      "manos": {
+        "overline": "FINE GOLDSMITHING",
+        "title": "Rings & Bracelets",
+        "meta": "View Rings",
+        "alt": "Hands wearing fine goldsmithing rings and bracelets by Andean Morphia"
+      },
+      "pendiente": {
+        "overline": "SIGNATURE FILIGREE",
+        "title": "Imperial Amethyst Drops",
+        "meta": "Official Catalog",
+        "alt": "Artisanal filigree earring with imperial amethyst by Andean Morphia"
+      },
+      "medallon": {
+        "overline": "SYMBOL OF REBIRTH",
+        "title": "Tree of Life Medallion",
+        "meta": "PEN 190.00",
+        "alt": "Tree of Life Medallion vertical composition — Symbol of rebirth"
+      },
+      "retrato2": {
+        "overline": "CUSCO ATELIER",
+        "title": "Timeless Details",
+        "meta": "Discover More",
+        "alt": "Editorial profile wearing artisanal earring from Andean Morphia Cusco Atelier"
+      }
+    }
   },
   "story": {
     "overline": "ESSENCE & ORIGIN",

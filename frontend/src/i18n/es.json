@@ -59,7 +59,55 @@
     "featured_piece_label": "Pieza en imagen",
     "featured_piece_name": "Anillo de serpiente",
     "featured_piece_cta": "Ver pieza",
-    "featured_piece_price": "PEN 190.00"
+    "featured_piece_price": "PEN 190.00",
+    "carousel_label": "Galería editorial Andean Morphia",
+    "prev_slide": "Diapositiva anterior",
+    "next_slide": "Siguiente diapositiva",
+    "go_to_slide": "Ir a la diapositiva",
+    "slides": {
+      "elegancia": {
+        "overline": "PIEZA DESTACADA",
+        "title": "Dije Árbol de la Vida",
+        "meta": "PEN 190.00",
+        "alt": "Editorial Andean Morphia — Dije Árbol de la Vida en oro artesanal"
+      },
+      "retrato1": {
+        "overline": "EDITORIAL ANDINO",
+        "title": "Luz & Herencia en Oro",
+        "meta": "Ver Colección",
+        "alt": "Retrato editorial con joyería en oro Andean Morphia sobre textura terrosa"
+      },
+      "collar_oro": {
+        "overline": "COLECCIÓN SOLAR",
+        "title": "Dijes de Autor en Oro",
+        "meta": "Explorar Dijes",
+        "alt": "Dije solar calado en oro artesanal de Andean Morphia"
+      },
+      "manos": {
+        "overline": "ALTA ORFEBRERÍA",
+        "title": "Anillos & Pulseras",
+        "meta": "Ver Anillos",
+        "alt": "Detalle de manos luciendo anillos y pulseras de alta orfebrería Andean Morphia"
+      },
+      "pendiente": {
+        "overline": "FILIGRANA DE AUTOR",
+        "title": "Aretes Amatista Imperial",
+        "meta": "Catálogo Oficial",
+        "alt": "Arete en filigrana artesanal con amatista imperial Andean Morphia"
+      },
+      "medallon": {
+        "overline": "SÍMBOLO DE RENACER",
+        "title": "Dije Árbol de la Vida",
+        "meta": "PEN 190.00",
+        "alt": "Medallón Árbol de la Vida en composición vertical — Símbolo de renacer"
+      },
+      "retrato2": {
+        "overline": "ATELIER CUSCO",
+        "title": "Detalles que Trascienden",
+        "meta": "Descubrir más",
+        "alt": "Perfil editorial luciendo arete artesanal del Atelier Andean Morphia en Cusco"
+      }
+    }
   },
   "story": {
     "overline": "ESENCIA & ORIGEN",
