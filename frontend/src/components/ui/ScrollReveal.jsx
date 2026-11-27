@@ -7,11 +7,12 @@ export default function ScrollReveal({
   delay = 0,
   duration = 600,
   threshold = 0.12,
+  rootMargin = '0px 0px -20px 0px',
   direction = 'up',
   as: Component = 'div',
   ...props
 }) {
-  const [ref, isVisible] = useScrollReveal({ threshold, once: true });
+  const [ref, isVisible] = useScrollReveal({ threshold, rootMargin, once: true });
 
   const getTransform = () => {
     if (isVisible) return 'translate-y-0 translate-x-0 opacity-100';

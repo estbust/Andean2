@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '../../i18n';
+import { getOptimizedImageUrl } from '../../utils/imageUrl';
 
 export default function ProductImageMagnifier({
   src,
@@ -13,6 +14,13 @@ export default function ProductImageMagnifier({
   const [origin, setOrigin] = useState({ x: 50, y: 50 });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalScale, setModalScale] = useState(1);
+  const [hasImageError, setHasImageError] = useState(false);
+
+  const optimizedSrc = getOptimizedImageUrl(src, { width: 1400 });
+
+  useEffect(() => {
+    setHasImageError(false);
+  }, [src]);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
@@ -76,10 +84,12 @@ export default function ProductImageMagnifier({
         aria-label={`${alt} - ${t('magnifier.hint')}`}
         className="relative aspect-[4/5] bg-surface rounded-md border border-[rgba(230,216,195,0.7)] overflow-hidden shadow-card flex items-center justify-center p-8 cursor-zoom-in group select-none focus:outline-none focus:ring-1 focus:ring-text-primary"
       >
-        {src ? (
+        {optimizedSrc && !hasImageError ? (
           <img
-            src={src}
+            src={optimizedSrc}
             alt={alt}
+            decoding="async"
+            onError={() => setHasImageError(true)}
             style={{
               transformOrigin: `${origin.x}% ${origin.y}%`,
               transform: isHovered ? 'scale(2.3)' : 'scale(1)',
@@ -181,11 +191,19 @@ export default function ProductImageMagnifier({
               style={{ transform: `scale(${modalScale})` }}
               onClick={(e) => e.stopPropagation()}
             >
-              <img
-                src={src}
-                alt={alt}
-                className="max-h-[75vh] w-auto object-contain rounded-md shadow-2xl"
-              />
+              {optimizedSrc && !hasImageError ? (
+                <img
+                  src={optimizedSrc}
+                  alt={alt}
+                  decoding="async"
+                  onError={() => setHasImageError(true)}
+                  className="max-h-[75vh] w-auto object-contain rounded-md shadow-2xl"
+                />
+              ) : (
+                <div className="px-8 py-12 rounded-md border border-canvas/20 bg-black/30 text-canvas/80 font-sans text-sm">
+                  Andean Morphia
+                </div>
+              )}
             </div>
           </div>
 

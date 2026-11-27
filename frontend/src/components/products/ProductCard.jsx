@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../../i18n';
+import { getOptimizedImageUrl } from '../../utils/imageUrl';
 
-export default function ProductCard({ product }) {
-  const { language, t } = useLanguage();
+export default function ProductCard({ product, priority = false }) {
+  const { language } = useLanguage();
+  const [hasImageError, setHasImageError] = useState(false);
+
+  useEffect(() => {
+    setHasImageError(false);
+  }, [product?.image]);
 
   if (!product) return null;
 
@@ -14,6 +20,7 @@ export default function ProductCard({ product }) {
 
   // Format price
   const formattedPrice = Number(product.price).toFixed(2);
+  const optimizedImageUrl = getOptimizedImageUrl(product.image, { width: 700 });
 
   return (
     <Link
@@ -22,12 +29,14 @@ export default function ProductCard({ product }) {
     >
       {/* 4:5 Aspect Ratio Image Container */}
       <div className="relative aspect-[4/5] bg-canvas overflow-hidden flex items-center justify-center p-6">
-        {product.image ? (
+        {optimizedImageUrl && !hasImageError ? (
           <img
-            src={product.image}
+            src={optimizedImageUrl}
             alt={displayName}
-            loading="lazy"
-            className="w-full h-full object-contain object-center transition-transform duration-500 ease-out group-hover:scale-105"
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            onError={() => setHasImageError(true)}
+            className="w-full h-full object-contain object-center opacity-100 transition-transform duration-500 ease-out group-hover:scale-105"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-text-secondary text-sm">

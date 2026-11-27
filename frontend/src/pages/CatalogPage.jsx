@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { useLanguage } from '../i18n';
 import { useProducts, useCategories } from '../hooks/useProducts';
 import ProductGrid from '../components/products/ProductGrid';
-import ScrollReveal from '../components/ui/ScrollReveal';
 import FiligreeDivider from '../components/ui/FiligreeDivider';
 
 export default function CatalogPage() {
@@ -90,14 +89,12 @@ export default function CatalogPage() {
         </div>
 
         {/* Product Grid */}
-        <ScrollReveal direction="up" delay={60}>
-          <ProductGrid
-            products={products}
-            loading={loading}
-            error={error}
-            columns={3}
-          />
-        </ScrollReveal>
+        <ProductGrid
+          products={products}
+          loading={loading}
+          error={error}
+          columns={3}
+        />
 
         <FiligreeDivider variant="morphia" spacing="py-12 lg:py-16" />
 
